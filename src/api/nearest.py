@@ -5,6 +5,11 @@ import json
 
 app = Flask(__name__)
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=True)
+
+
+
 @app.route('/nearest', methods=['POST'])
 def hello_world():
 
@@ -12,14 +17,16 @@ def hello_world():
 
         latitude = request.json['latitude']
         longitude = request.json['longitude']
+        precision = request.json['precision']
 
-        jumps = nearest_jumps(latitude, longitude)
+        jumps = nearest_jumps(latitude, longitude, precision)
         return json.dumps(jumps);
 
     return 'It must be method=POST and mimetype=application/json'
 
 
-def nearest_jumps(latitude, longitude):
+
+def nearest_jumps(latitude, longitude, precision):
 
     jumps = [
                 {
