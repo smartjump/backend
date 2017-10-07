@@ -30,16 +30,21 @@ def calculate_distance(lat_usuario, lon_usuario):
 
     data_out = []
     for i,elem in enumerate(jumps_data):
-        distancia = (haversine(float(elem['lat']),float(elem['lon']), lat_usuario ,\
-            lon_usuario ))
+        latitude = float(elem['lat'])
+        longitude = float(elem['lon'])
+        distancia = haversine(latitude , longitude, lat_usuario,\
+            lon_usuario)
         nome = elem['assetName']
         ids = elem['assetId']
         bicis = elem['available']
-        data_out.append([ids, distancia, "bike", nome, bicis])
+        data_out.append({'id':ids, 'latitude':latitude,
+            'longitude':longitude, 'distance':distancia, 'mean':"bike",
+            'info':{'addres': nome,'available':bicis}})
 
-    #print(d)
-    data_out.sort(key=operator.itemgetter(1))
+    #print(data_out)
+    data_out.sort(key=operator.itemgetter('distance'))
 
     return data_out
+
 
 
