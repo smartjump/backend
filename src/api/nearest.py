@@ -1,16 +1,13 @@
-
-from flask import Flask
-from flask import request
+from flask import Flask, request
 import json
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    application.run(host='0.0.0.0', debug=True)
 
 
-
-@app.route('/nearest', methods=['POST'])
+@application.route('/nearest', methods=['POST'])
 def hello_world():
 
     if request.method == 'POST' and request.is_json:
@@ -46,7 +43,7 @@ def nearest_jumps(latitude, longitude, precision):
 					'distance': 434,
 					'mean': "bike",
 					'info': {
-						'address': "Estación de trenes"
+						'address': "Estacion de trens"
 						}
 					},
 				{ 
