@@ -34,7 +34,7 @@ def ubicacion_paradas():
 
 # Toda la info de una parada de autobus urbano.
 def info_parada():
-    for i in range(1,583):
+    for i in range(1,50):
         info_parada =\
         "https://smart.coruna.es/sib-api/api/v1/openDataParadaAutobus/getAssetInfo?$id=%d" %i
         p1 = requests.get(info_parada, headers=headers)
