@@ -15,7 +15,7 @@ import json
 
 # Ficheros #
 f1 = open("dataset/ubicacion_paradas_bus.json", "w")
-f2 = open("dataset/info_por_parada.json")
+f2 = open("dataset/info_por_parada.json", "w")
 
 # Header #
 headers = {'x-sofia2-apikey': "14b0fdf8d58541a087c49a97f61903eb",
@@ -34,16 +34,18 @@ def ubicacion_paradas():
 
 # Toda la info de una parada de autobus urbano.
 def info_parada():
-    info_parada = "https://smart.coruna.es/sib-api/api/v1/openDataParadaAutobus/getAssetInfo?$id=1"
-    p1 = requests.get(info_parada, headers=headers)
-    p1_json = p1.json()
-    print(json.dumps(json.loads(p1_json['data'])), file=f2)
+    for i in range(1,583):
+        info_parada =\
+        "https://smart.coruna.es/sib-api/api/v1/openDataParadaAutobus/getAssetInfo?$id=%d" %i
+        p1 = requests.get(info_parada, headers=headers)
+        p1_json = p1.json()
+        print(json.dumps(json.loads(p1_json['data'])), file=f2)
 
 
 def main():
     # Ubicacion paradas de bus.
     ubicacion_paradas()
-
+    info_parada()
 
 if __name__=='__main__':
     main()
