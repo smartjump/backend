@@ -15,7 +15,7 @@ import pandas as pd
 
 def main():
     # Ficheros #
-    path = "dataset/get_jumps.json"
+    jumps = "dataset/get_jumps.json"
     ubicacion = open("dataset/ubicacion_estaciones_bici.json", "r")
     estado = open("dataset/estado_estaciones_bici.json", "r")
     
@@ -57,7 +57,7 @@ def main():
     df = df.sort_index()
     df = df.rename(columns={'Feed.assetName': 'assetName'})
     
-    df.to_json(path, orient='records')
+    df.to_json(jumps, orient='records')
     
 if __name__=='__main__':
     main()
