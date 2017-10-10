@@ -3,7 +3,7 @@
 
 ## Standalone debug
 
-    FLASK\APP=api/nearest.py flask run --host=0.0.0.0
+    FLASK_APP=api/nearest.py flask run --host=0.0.0.0
 
 Test with:
 
@@ -17,4 +17,7 @@ Read and fight with these files:
 - [smartjump-api.uwsgi.service](https://github.com/smartjump/backend/blob/master/smartjump-api.uwsgi.service)
 - [wsgi.py](https://github.com/smartjump/backend/blob/master/wsgi.py)
 
+Test with:
+
+    http --json POST http://smartjump.ovh/nearest latitude=34.23 longitude=11.22 precision=34
 
